@@ -9,6 +9,11 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @State var emailTF: String = ""
+    @State var passwordTF: String = ""
+    @State private var showingAlert = false
+    
     var body: some View {
         VStack {
             // Welcome Logo
@@ -38,7 +43,10 @@ struct LoginView: View {
                     .frame(width: 18, height: 18)
                     .padding(EdgeInsets(top: 18, leading: 15, bottom: 18, trailing: 0))
                 
-                TextField("Email", text: .constant(""))
+                TextField("Email", text: $emailTF, onEditingChanged: { (changed) in
+                    print("Text Value \(self.emailTF)")
+                }
+                )
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 15))
             }
             .background(Color.white)
@@ -55,7 +63,7 @@ struct LoginView: View {
                     .frame(width: 18, height: 18)
                     .padding(EdgeInsets(top: 18, leading: 15, bottom: 18, trailing: 0))
                 
-                SecureField("Password", text: .constant(""))
+                SecureField("Password", text: $passwordTF)
                     .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 15))
             }
             .background(Color.white)
@@ -74,17 +82,26 @@ struct LoginView: View {
             }
             
             // LogIn Button
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {
+                
+                // Show Alert Flag to true
+                self.showingAlert = true
+            }) {
                 Spacer()
                 Text("LOG IN")
                     .foregroundColor(.white)
                     .bold()
                 Spacer()
             }
-            .padding()
-            .background(Color(red: 0.0/255.0, green: 74.0/255.0, blue: 159.0/255.0))
-            .cornerRadius(50)
-            .padding(EdgeInsets(top: 15, leading: 100, bottom: 0, trailing: 100))
+            .alert(isPresented: $showingAlert, content: { () -> Alert in
+                Alert(title: Text("Your Value"),
+                      message: Text("Email : \(self.emailTF) \n Password : \(self.passwordTF)"),
+                      dismissButton: .default(Text("Ok")))
+            })
+                .padding()
+                .background(Color(red: 0.0/255.0, green: 74.0/255.0, blue: 159.0/255.0))
+                .cornerRadius(50)
+                .padding(EdgeInsets(top: 15, leading: 100, bottom: 0, trailing: 100))
             
             // Connect Using Label
             Text("Or connect using")
