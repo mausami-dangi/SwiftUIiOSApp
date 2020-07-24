@@ -36,16 +36,15 @@ struct LoginView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 18, height: 18)
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 18, leading: 15, bottom: 18, trailing: 0))
                 
                 TextField("Email", text: .constant(""))
-                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 12))
+                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 15))
             }
-            .padding()
             .background(Color.white)
-            .cornerRadius(30)
+            .cornerRadius(25)
             .clipped()
-            .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
+            .shadow(color: Color.gray, radius: 3.0, x: 0, y: 0)
             .padding(EdgeInsets(top: 20, leading: 16, bottom: 0, trailing: 16))
             
             // Password Field
@@ -54,16 +53,15 @@ struct LoginView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 18, height: 18)
-                    .padding(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 18, leading: 15, bottom: 18, trailing: 0))
                 
                 SecureField("Password", text: .constant(""))
-                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 12))
+                    .padding(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 15))
             }
-            .padding()
             .background(Color.white)
-            .cornerRadius(30)
+            .cornerRadius(25)
             .clipped()
-            .shadow(color: Color.gray, radius: 4, x: 0, y: 0)
+            .shadow(color: Color.gray, radius: 3.0, x: 0, y: 0)
             .padding(EdgeInsets(top: 5, leading: 16, bottom: 0, trailing: 16))
             
             // Forgot Password Button
